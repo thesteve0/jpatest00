@@ -32,7 +32,7 @@ public class ParkWS {
     @Produces("application/json")
     public List getAllParks(){
         List allParksList = new ArrayList();
-        allParksList = em.createQuery("from ParkpointsEntity").getResultList();
+        allParksList = em.createQuery("select id, name from ParkpointsEntity").getResultList();
 
         return allParksList;
     }
