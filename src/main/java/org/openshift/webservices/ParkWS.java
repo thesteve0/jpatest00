@@ -57,7 +57,9 @@ public class ParkWS {
         ArrayList forResults = new ArrayList(inList.size());
         for(int i = 0; i < inList.size(); i++){
             //HashMap park = new HashMap();
-            Integer tempInt = (Integer) ((ArrayList) inList.get(i)).get(0);
+            ArrayList interior = (ArrayList) inList.get(i);
+
+           Integer tempInt = interior.size();
            forResults.add(tempInt);
 
         }
