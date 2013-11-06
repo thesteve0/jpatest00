@@ -21,7 +21,8 @@ import org.hibernate.annotations.Type;
 public class ParkpointsEntity {
     private int parkid;
     private String name;
-    @Type(type="org.hibernate.spatial.GeometryType")
+
+
     private Point theGeom;
 
     @javax.persistence.Column(name = "parkid", nullable = false, updatable = false)
@@ -46,6 +47,7 @@ public class ParkpointsEntity {
     }
 
     @javax.persistence.Column(name = "the_geom")
+    @Type(type="org.hibernate.spatial.GeometryType")
     public Point getTheGeom() {
         return theGeom;
     }
