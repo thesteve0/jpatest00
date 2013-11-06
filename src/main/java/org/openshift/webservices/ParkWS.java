@@ -42,7 +42,8 @@ public class ParkWS {
         List allParksList = new ArrayList();
         System.out.println("before create query:: " + allParksList.size());
         System.out.println("what about em:: " + em.toString());
-        Query query =   em.createQuery("select p.id, p.name, astext(p.theGeom)from ParkpointsEntity p");
+        //Query query =   em.createQuery("select p.id, p.name, astext(p.theGeom)from ParkpointsEntity p");
+        Query query =   em.createQuery("select p from ParkpointsEntity p");
 
         ArrayList templist = (ArrayList) query.getResultList();
         if (templist != null && templist.size() > 0){
