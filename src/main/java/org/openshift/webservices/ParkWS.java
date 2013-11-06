@@ -57,7 +57,7 @@ public class ParkWS {
         ArrayList forResults = new ArrayList(inList.size());
         for(int i = 0; i < inList.size(); i++){
             //HashMap park = new HashMap();
-           forResults.add(inList.get(i).toString());
+           forResults.add(((ArrayList)inList.get(i)).toString());
 
         }
 
