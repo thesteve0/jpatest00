@@ -21,8 +21,7 @@ import org.hibernate.annotations.Type;
 public class ParkpointsEntity {
     private int parkid;
     private String name;
-
-
+    //I should have been able to put the @Type here but it never seemed to work so I added it to the getters and setters
     private Point theGeom;
 
     @javax.persistence.Column(name = "parkid", nullable = false, updatable = false)

@@ -19,6 +19,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 /*
 The EJB container handles @PersistenceContext injection ... ParkWS is not an EJB  ...
@@ -42,8 +43,24 @@ public class ParkWS {
         System.out.println("before create query:: " + allParksList.size());
         System.out.println("what about em:: " + em.toString());
         Query query =   em.createQuery("select p.id, p.name, astext(p.theGeom)from ParkpointsEntity p");
-        allParksList = query.getResultList();
+
+        ArrayList templist = (ArrayList) query.getResultList();
+        if (templist != null && templist.size() > 0){
+           allParksList = processQueryResults(templist);
+        }
         System.out.println("almost there");
         return allParksList;
+    }
+
+
+    private ArrayList processQueryResults(ArrayList inList){
+        ArrayList forResults = new ArrayList(inList.size());
+        for(int i = 0; i < inList.size(); i++){
+            //HashMap park = new HashMap();
+            inList.get(i).toString();
+
+        }
+
+        return forResults;
     }
 }
