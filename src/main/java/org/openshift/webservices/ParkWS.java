@@ -33,6 +33,7 @@ public class ParkWS {
     public List getAllParks(){
         List allParksList = new ArrayList();
         System.out.println("before create query:: " + allParksList.size());
+        System.out.println("what about em:: " + em.toString());
         Query query =   em.createQuery("select p from ParkpointsEntity p");
         allParksList = query.getResultList();
         System.out.println("almost there");
