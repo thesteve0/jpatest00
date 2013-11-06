@@ -19,7 +19,7 @@
           <factory-entry name="NewPersistenceUnit" value="c2602569-f106-43dc-b58b-b8e7a4e51b2a" />
           <factory-entry name="parks" />
         </datasource-mapping>
-        <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/src/main/java/META-INF/persistence.xml" />
+        <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/src/main/webapp/WEB-INF/classes/META-INF/persistence.xml" />
       </configuration>
     </facet>
   </component>
