@@ -11,6 +11,7 @@ package org.openshift.webservices;
 
 import org.openshift.data.ParkpointsEntity;
 
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -19,7 +20,12 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import java.util.ArrayList;
 import java.util.List;
+/*
+The EJB container handles @PersistenceContext injection ... ParkWS is not an EJB  ...
+you might want to make it an stateless session bean by adding @Stateless to it
+ */
 
+@Stateless
 @Path("parks")
 public class ParkWS {
 
