@@ -31,7 +31,8 @@ public class ParkWS {
 
      //get the entity manager from the container. No need to automanage
     //This also includes the closing of the EM
-    @PersistenceContext(unitName = "parks")
+    //No need to name the unit because we only have one persistence unit in persistence.xml
+    @PersistenceContext
     EntityManager em;
 
     @GET

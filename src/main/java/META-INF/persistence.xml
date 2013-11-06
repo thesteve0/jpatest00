@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
 
-    <persistence-unit name="parks" transaction-type="RESOURCE_LOCAL">
-        <provider>org.hibernate.ejb.HibernatePersistence</provider>
+    <persistence-unit name="parks" >
+        <!-- not needed really <provider>org.hibernate.ejb.HibernatePersistence</provider> -->
         <jta-data-source>java:jboss/datasources/PostgreSQLDS</jta-data-source>
-        <class>org.openshift.data.ParkpointsEntity</class>
+       <!-- not needed should be autodiscovered  <class>org.openshift.data.ParkpointsEntity</class> -->
         <properties>
 <!--
             <property name="hibernate.connection.url" value="jdbc:postgresql://127.0.0.1:52891/jpatestoo"/>
