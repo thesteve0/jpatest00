@@ -2,7 +2,7 @@
 <persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
 
     <persistence-unit name="parks" transaction-type="RESOURCE_LOCAL">
-        <!-- <provider>org.hibernate.</provider> -->
+        <provider>org.hibernate.ejb.HibernatePersistence</provider>
         <jta-data-source>java:jboss/datasources/PostgreSQLDS</jta-data-source>
         <class>org.openshift.data.ParkpointsEntity</class>
         <properties>
