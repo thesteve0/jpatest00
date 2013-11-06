@@ -25,7 +25,7 @@ public class ParkWS {
 
      //get the entity manager from the container. No need to automanage
     //This also includes the closing of the EM
-    @PersistenceContext
+    @PersistenceContext(unitName = "parks")
     EntityManager em;
 
     @GET
