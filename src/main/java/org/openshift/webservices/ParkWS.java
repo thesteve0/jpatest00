@@ -32,6 +32,7 @@ public class ParkWS {
     @Produces("application/json")
     public List getAllParks(){
         List allParksList = new ArrayList();
+        System.out.println("before create query:: " + allParksList.size());
         Query query =   em.createQuery("select p from ParkpointsEntity p");
         allParksList = query.getResultList();
         System.out.println("almost there");
