@@ -57,7 +57,8 @@ public class ParkWS {
         ArrayList forResults = new ArrayList(inList.size());
         for(int i = 0; i < inList.size(); i++){
             //HashMap park = new HashMap();
-            String interiorClass = inList.get(i).getClass().getSimpleName();
+            ParkpointsEntity ppe = (ParkpointsEntity) inList.get(i);
+            String interiorClass = ppe.getName() ;
 
 
            forResults.add(interiorClass);
