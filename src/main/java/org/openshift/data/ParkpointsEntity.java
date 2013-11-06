@@ -1,8 +1,13 @@
 package org.openshift.data;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
+
 import com.vividsolutions.jts.geom.Point;
 import org.hibernate.annotations.Type;
+
+
+
 
 /**
  * Created with IntelliJ IDEA.
@@ -41,7 +46,6 @@ public class ParkpointsEntity {
     }
 
     @javax.persistence.Column(name = "the_geom")
-    @Basic
     public Point getTheGeom() {
         return theGeom;
     }

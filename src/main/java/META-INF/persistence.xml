@@ -3,15 +3,15 @@
 
     <persistence-unit name="parks">
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
-        <jta-data-source>java:jboss/datasources/PostgreSQLDS</jta-data-source>
+<!--        <jta-data-source>java:jboss/datasources/PostgreSQLDS</jta-data-source> -->
         <class>org.openshift.data.ParkpointsEntity</class>
         <properties>
-<!--
+
             <property name="hibernate.connection.url" value="jdbc:postgresql://127.0.0.1:52891/jpatestoo"/>
             <property name="hibernate.connection.driver_class" value="org.postgresql.Driver"/>
             <property name="hibernate.connection.username" value="adminwh1rfdg"/>
             <property name="hibernate.connection.password" value="xwrg6sKrt6iA"/>
--->
+
             <property name="hibernate.archive.autodetection" value="class"/>
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>
