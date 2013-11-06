@@ -1,6 +1,8 @@
 package org.openshift.data;
 
 import javax.persistence.*;
+import com.vividsolutions.jts.geom.Point;
+import org.hibernate.annotations.Type;
 
 /**
  * Created with IntelliJ IDEA.
@@ -14,7 +16,8 @@ import javax.persistence.*;
 public class ParkpointsEntity {
     private int parkid;
     private String name;
-    private String theGeom;
+    @Type(type="org.hibernate.spatial.GeometryType")
+    private Point theGeom;
 
     @javax.persistence.Column(name = "parkid", nullable = false, updatable = false)
     @Id
@@ -39,11 +42,11 @@ public class ParkpointsEntity {
 
     @javax.persistence.Column(name = "the_geom")
     @Basic
-    public String getTheGeom() {
+    public Point getTheGeom() {
         return theGeom;
     }
 
-    public void setTheGeom(String theGeom) {
+    public void setTheGeom(Point theGeom) {
         this.theGeom = theGeom;
     }
 
