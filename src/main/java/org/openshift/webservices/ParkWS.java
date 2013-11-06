@@ -57,10 +57,10 @@ public class ParkWS {
         ArrayList forResults = new ArrayList(inList.size());
         for(int i = 0; i < inList.size(); i++){
             //HashMap park = new HashMap();
-            ArrayList interior = (ArrayList) inList.get(i);
+            String interiorClass = inList.get(i).getClass().getSimpleName();
 
-           Integer tempInt = interior.size();
-           forResults.add(tempInt);
+
+           forResults.add(interiorClass);
 
         }
 
