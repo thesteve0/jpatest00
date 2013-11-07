@@ -61,7 +61,8 @@ public class ParkWS {
             ParkpointsEntity ppe = (ParkpointsEntity) inList.get(i);
             park.put("name", ppe.getName())   ;
             park.put("id", ppe.getParkid());
-            park.put("position", ppe.getTheGeom().getX()) ;
+            double[] positions = {ppe.getTheGeom().getX(),ppe.getTheGeom().getY()};
+            park.put("position", positions) ;
 
 
 
