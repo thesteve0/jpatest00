@@ -62,7 +62,7 @@ public class ParkWS {
 
         //time to make the box filter
         //the lat2 and lon2 are the mins
-        StringBuffer sb = new StringBuffer("POLYGON((");
+        StringBuffer sb = new StringBuffer("SRID=4326;POLYGON((");
         sb.append(lon2 + " ");
         sb.append(lat2 + ",");
         sb.append(lon1 + " ");
