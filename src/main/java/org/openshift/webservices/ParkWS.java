@@ -9,6 +9,8 @@ package org.openshift.webservices;
  * To change this template use File | Settings | File Templates.
  */
 
+import com.vividsolutions.jts.geom.Geometry;
+import com.vividsolutions.jts.io.WKTReader;
 import org.openshift.data.ParkpointsEntity;
 
 import javax.ejb.Stateless;
@@ -18,9 +20,11 @@ import javax.persistence.Query;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 /*
 The EJB container handles @PersistenceContext injection ... ParkWS is not an EJB  ...
 you might want to make it an stateless session bean by adding @Stateless to it
@@ -40,9 +44,6 @@ public class ParkWS {
     @Produces("application/json")
     public List getAllParks(){
         List allParksList = new ArrayList();
-        System.out.println("before create query:: " + allParksList.size());
-        System.out.println("what about em:: " + em.toString());
-        //Query query =   em.createQuery("select p.id, p.name, astext(p.theGeom)from ParkpointsEntity p");
         Query query =   em.createQuery("select p from ParkpointsEntity p");
 
         ArrayList templist = (ArrayList) query.getResultList();
@@ -50,6 +51,40 @@ public class ParkWS {
            allParksList = processQueryResults(templist);
         }
         System.out.println("almost there");
+        return allParksList;
+    }
+
+    @GET
+    @Produces("application/json")
+    @Path("within")
+    public List findParksWithin(@QueryParam("lat1") float lat1, @QueryParam("lon1") float lon1, @QueryParam("lat2") float lat2, @QueryParam("lon2") float lon2){
+        ArrayList<Map> allParksList = new ArrayList<Map>();
+
+        //time to make the box filter
+        //the lat2 and lon2 are the mins
+        StringBuffer sb = new StringBuffer("POLYGON((");
+        sb.append(lon2 + " ");
+        sb.append(lat2 + ",");
+        sb.append(lon1 + " ");
+        sb.append(lat2 + ",");
+        sb.append(lon1 + " ");
+        sb.append(lat1 + ",");
+        sb.append(lon2 + " ");
+        sb.append(lat1 + ",");
+        sb.append(lon2 + " ");
+        sb.append(lat2 + "))");
+        WKTReader wktReader = new WKTReader();
+        Geometry boxFilter = null;
+        try {
+            boxFilter = wktReader.read(sb.toString());
+        } catch (Exception e){
+            System.out.println("Threw exception making the filter: " + e.getClass() + " :: " + e.getMessage());
+        }
+
+        Query qe = em.createQuery("select p from ParkpointsEntity p where within(p.theGeom, :filter) = true", ParkpointsEntity.class);
+        qe.setParameter("filter", boxFilter);
+        allParksList = processQueryResults((ArrayList) qe.getResultList());
+
         return allParksList;
     }
 
