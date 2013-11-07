@@ -8,8 +8,8 @@
         <properties>
 
             <property name="hibernate.connection.url" value="jdbc:postgresql://5276e4a64382ecf57f000257-spdemo.rhcloud.com:52891/jpatestoo"/>
-            <property name="hibernate.connection.username" value="${env.OPENSHIFT_POSTGRESQL_DB_USERNAME}"/>
-            <property name="hibernate.connection.password" value="${env.OPENSHIFT_POSTGRESQL_DB_PASSWORD}"/>
+            <property name="hibernate.connection.username" value="adminwh1rfdg"/>
+            <property name="hibernate.connection.password" value="xwrg6sKrt6iA"/>
 
             <property name="hibernate.connection.driver_class" value="org.postgresql.Driver"/>
             <property name="hibernate.dialect" value="org.hibernate.spatial.dialect.postgis.PostgisDialect"/>

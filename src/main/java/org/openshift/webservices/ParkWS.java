@@ -57,12 +57,15 @@ public class ParkWS {
     private ArrayList processQueryResults(ArrayList inList){
         ArrayList forResults = new ArrayList(inList.size());
         for(int i = 0; i < inList.size(); i++){
-            //HashMap park = new HashMap();
+            HashMap park = new HashMap();
             ParkpointsEntity ppe = (ParkpointsEntity) inList.get(i);
-            String interiorClass = ppe.getName() ;
+            park.put("name", ppe.getName())   ;
+            park.put("id", ppe.getParkid());
+            park.put("position", ppe.getTheGeom()) ;
 
 
-           forResults.add(interiorClass);
+
+           forResults.add(ppe);
 
         }
 
