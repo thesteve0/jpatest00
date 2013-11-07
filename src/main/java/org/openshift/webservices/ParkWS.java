@@ -65,7 +65,7 @@ public class ParkWS {
 
 
 
-           forResults.add(ppe);
+           forResults.add(park);
 
         }
 
