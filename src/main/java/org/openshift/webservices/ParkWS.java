@@ -10,6 +10,8 @@ package org.openshift.webservices;
  */
 
 import com.vividsolutions.jts.geom.Geometry;
+import com.vividsolutions.jts.geom.GeometryFactory;
+import com.vividsolutions.jts.geom.PrecisionModel;
 import com.vividsolutions.jts.io.WKTReader;
 import org.openshift.data.ParkpointsEntity;
 
@@ -60,9 +62,11 @@ public class ParkWS {
     public List findParksWithin(@QueryParam("lat1") float lat1, @QueryParam("lon1") float lon1, @QueryParam("lat2") float lat2, @QueryParam("lon2") float lon2){
         ArrayList<Map> allParksList = new ArrayList<Map>();
 
+        //since our data in PostGIS has a srid of 4326, we need to use a geometryfactory to get a geom with that model
+        GeometryFactory geometryFactory = new GeometryFactory(new PrecisionModel(PrecisionModel.FLOATING), 4326);
         //time to make the box filter
         //the lat2 and lon2 are the mins
-        StringBuffer sb = new StringBuffer("SRID=4326;POLYGON((");
+        StringBuffer sb = new StringBuffer("POLYGON((");
         sb.append(lon2 + " ");
         sb.append(lat2 + ",");
         sb.append(lon1 + " ");
@@ -73,7 +77,7 @@ public class ParkWS {
         sb.append(lat1 + ",");
         sb.append(lon2 + " ");
         sb.append(lat2 + "))");
-        WKTReader wktReader = new WKTReader();
+        WKTReader wktReader = new WKTReader(geometryFactory);
         Geometry boxFilter = null;
         System.out.println(sb.toString());
         try {
