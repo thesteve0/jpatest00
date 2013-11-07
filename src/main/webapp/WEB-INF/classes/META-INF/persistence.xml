@@ -7,7 +7,7 @@
        <!-- not needed should be autodiscovered  <class>org.openshift.data.ParkpointsEntity</class> -->
         <properties>
 
-            <property name="hibernate.connection.url" value="jdbc:postgresql://xwrg6sKrt6iA@5276e4a64382ecf57f000257-spdemo.rhcloud.com:52891/jpatestoo"/>
+            <property name="hibernate.connection.url" value="jdbc:postgresql://5276e4a64382ecf57f000257-spdemo.rhcloud.com:52891/jpatestoo"/>
             <property name="hibernate.connection.username" value="adminwh1rfdg"/>
             <property name="hibernate.connection.password" value="xwrg6sKrt6iA"/>
 
