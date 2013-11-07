@@ -81,7 +81,7 @@ public class ParkWS {
             System.out.println("Threw exception making the filter: " + e.getClass() + " :: " + e.getMessage());
         }
 
-        Query qe = em.createQuery("select p from ParkpointsEntity p where within(p.theGeom, :filter) = true", ParkpointsEntity.class);
+        Query qe = em.createQuery("select p from ParkpointsEntity p where intersects(p.theGeom, :filter) = true", ParkpointsEntity.class);
         qe.setParameter("filter", boxFilter);
         allParksList = processQueryResults((ArrayList) qe.getResultList());
 
