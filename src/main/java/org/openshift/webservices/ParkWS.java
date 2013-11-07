@@ -75,6 +75,7 @@ public class ParkWS {
         sb.append(lat2 + "))");
         WKTReader wktReader = new WKTReader();
         Geometry boxFilter = null;
+        System.out.println(sb.toString());
         try {
             boxFilter = wktReader.read(sb.toString());
         } catch (Exception e){
